@@ -1,0 +1,52 @@
+<h1>Reactive-driven-form</h1>
+<p>
+  Reactive driven form are more skillable and more suitable for more complex
+  form
+</p>
+<h4>
+  Plese dont forget to import <b>ReactiveFormsModule</b> in app.module before
+  create any form
+</h4>
+
+<!-- <h2>FormControl</h2>
+<label for="name">Name: </label>
+<input type="text" name="name" id="name" [formControl]="name" />
+<p>Value: {{ name.value }}</p>
+<button (click)="updateName()">Update name</button> -->
+
+<h2>FormGroup</h2>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmitGroup()">
+  <label for="first-name">First Name: </label>
+  <input
+    type="text"
+    name="first-name"
+    id="first-name"
+    formControlName="firstName"
+  />
+  <label for="last-name">Last Name: </label>
+  <input
+    type="text"
+    name="last-name"
+    id="last-name"
+    formControlName="lastName"
+  />
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>
+
+<h2>Form Validation</h2>
+<form [formGroup]="validationForm">
+  <input
+    type="text"
+    name="name"
+    id="name"
+    required
+    minlength="4"
+    formControlName="name"
+  />
+  <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+    <div *ngIf="name?.errors?.['required']">Name is required</div>
+    <div *ngIf="name?.errors?.['minlength']">
+      Name must be at least 4 characters long
+    </div>
+  </div>
+</form>

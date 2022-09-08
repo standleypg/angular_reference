@@ -1,0 +1,33 @@
+<h1>Attributes Directives</h1>
+<div [ngClass]="{ cssClass: isSpecial }">Is Special</div>
+<div [ngClass]="currentClass">current class</div>
+<div [ngStyle]="currentStyle">currentStyle</div>
+
+<button (click)="setCurrentStyle()">Change Style</button>
+<br />
+<label for="example">Change name</label>
+<input type="text" [(ngModel)]="name" id="example" />
+<p>{{ name }}</p>
+
+<br />
+
+<p appAttDirectives [appHighlight]="'red'">Styled by appAttDirectives</p>
+
+<h1>Structural Directives</h1>
+
+<h5>*ngIf</h5>
+<p *ngIf="isActive">This P tag is active</p>
+<button (click)="togglePTagStatus()">
+  Toggle to {{ isActive ? "deactive" : "active" }} p tag
+</button>
+
+<h5>*ngFor</h5>
+<p *ngFor="let ninja of ninjas; let i = index">{{ i }}. {{ ninja.name }}</p>
+
+<h5>*ngSwitch</h5>
+<div [ngSwitch]="ninja.name">
+  <div *ngSwitchCase="'mario'">Mario</div>
+  <div *ngSwitchCase="'yoshi'">Yopshi</div>
+  <div *ngSwitchDefault>Default</div>
+</div>
+<button (click)="toogleNinjaToYoshi(ninja.name)">Change ninja name</button>

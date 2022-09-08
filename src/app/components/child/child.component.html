@@ -1,0 +1,15 @@
+<p>{{ messageFromParent }}</p>
+
+<button (click)="sendToParent('Message from child')">
+  Click me to view message from child by using Output decorator
+</button>
+
+<br /><br />
+<span style="color: blue"
+  >below is the content from parent using ng-content</span
+>
+
+<ng-content></ng-content>
+
+<ng-content [question]></ng-content>
+<ng-content [answer]></ng-content>

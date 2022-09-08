@@ -1,0 +1,19 @@
+<p>parent works!</p>
+<button (click)="displayMessageFromViewChild()">
+  Click me to alert the message by using ViewChild
+</button>
+<app-child
+  [messageFromParent]="
+    'This is message from parent component and displaying in child component'
+  "
+  (messageFromChild)="receiveFromChild($event)"
+>
+  <h1>Title from parent</h1>
+  <p>
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde, voluptatum.
+  </p>
+
+  <h1 question>Can I ask you?</h1>
+  <p answer>what man</p>
+</app-child>
+<br />

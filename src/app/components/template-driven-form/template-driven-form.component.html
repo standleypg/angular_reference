@@ -1,0 +1,37 @@
+<h1>Template-driven-form</h1>
+<p>Template driven form are suitable for small or simple form</p>
+<h4>
+  Plese dont forget to import <b>FormsModule</b> in app.module before create any
+  form
+</h4>
+<div [hidden]="submited">
+  <form #petForm="ngForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">name</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        required
+        [(ngModel)]="model.name"
+      />
+    </div>
+    <div>
+      <label for="specie">specie</label>
+      <select name="specie" id="specie" [(ngModel)]="model.specie">
+        <option *ngFor="let specie of species" [value]="specie">
+          {{ specie }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="!petForm.form.valid">Submit</button>
+  </form>
+</div>
+<div [hidden]="!submited">
+  <h3>Form Submitted:</h3>
+  <p>Name: {{ model.name }}</p>
+  <p>Specie: {{ model.specie }}</p>
+  <button (click)="editForm()">Edit Form again</button>
+</div>
+
+<p>{{ model | json }}</p>
